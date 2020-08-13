@@ -17,6 +17,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 app.use(cookieParser())
+app.use(
+    session({
+        secret: process.env.SECRET_KEY,
+        resave: false,
+        saveUninitialized: true
+    })
+)
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 app.set('views, views')
 app.set('view engine', 'ejs')
@@ -31,7 +41,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/auth', authRouter)
-
 app.use('/user', userRouter)
 
 app.use('*', (req, res) => {
