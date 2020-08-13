@@ -7,6 +7,7 @@ const session = require('express-session')
 const passport = require('passport')
 
 const userRouter = require('./routes/user-router')
+const authRouter = require('./routes/auth-router')
 
 const app = express()
 require('dotenv').config();
@@ -28,6 +29,8 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
     res.render('index')
 })
+
+app.use('/auth', authRouter)
 
 app.use('/user', userRouter)
 
