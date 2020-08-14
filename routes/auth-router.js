@@ -3,13 +3,13 @@ const authHelpers = require('../services/auth/auth-helpers')
 const passport = require('../services/auth/local')
 
 authRouter.get('/login', authHelpers.loginRedirect, (req, res) => {
-    res.render('auth/show')
+    res.render('index')
 })
 
 authRouter.post(
     '/login',
     passport.authenticate('local', {
-        successRedirect: '/user',
+        successRedirect: '/entry',
         failureRedirect: '/auth/login',
         failureFlash: true
     })

@@ -8,6 +8,7 @@ const passport = require('passport')
 
 const userRouter = require('./routes/user-router')
 const authRouter = require('./routes/auth-router')
+const entryRouter = require('./routes/entry-router')
 
 const app = express()
 require('dotenv').config();
@@ -42,12 +43,14 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
+app.use('/entry', entryRouter)
 
 app.use('*', (req, res) => {
     res.status(404).send('Not found!!')
 })
 
 app.use((err, req, res, next) => {
+    console.log(err)
     res.status(err.status || 500).json({
         message: err.message,
         stack: err.stack
