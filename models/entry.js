@@ -1,5 +1,5 @@
 const db = require('../db/config')
-const { use } = require('passport')
+const prettyLog = require('../services/log/pretty-logs')
 
 class Entry {
     constructor({ id, user_id, entry, entryDate, tag }) {
@@ -8,6 +8,19 @@ class Entry {
         this.entry = entry,
         this.entryDate = entryDate,
         this.tag = tag
+    }
+
+    static getAllUserEntries(id) {
+        return db.manyOrNone(
+            `SELECT * FROM entries WHERE user_id = $1`
+            , id
+        )
+        .then((entries) => {
+            prettyLog("entries in Entry.getAllUserEntries()", entries)
+            return entries.map((el) => { 
+                prettyLog("el in entries.map in Entry.getAllUserEntries()", el)
+                new this(el) })
+        })
     }
 
     save() {

@@ -1,5 +1,11 @@
-<%- include('./partials/boilerplate') %>
+<%- include('../partials/boilerplate') %>
 
-<h1>You're logged in!</h1>
+<h1>Entries!</h1>
 
-<%- include('./partials/end') %>
+<% entries.forEach((entries) => { %>
+    <p><%= entries.entry_date %></p>
+    <p><%= entries.entry %></p>
+    <p><%= entries.tag %></p>
+<% }) %>
+
+<%- include('../partials/end') %>

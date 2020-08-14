@@ -1,8 +1,21 @@
 const Entry = require('../models/entry')
+const prettyLog = require('../services/log/pretty-logs')
 
 const entryController = {
     index: (req, res, next) => {
-        res.render('entries/index')
+        prettyLog("req.user.id in entryController.index", req.user.id)
+        Entry.getAllUserEntries(req.user.id)
+            .then((entries) => {
+                //res.render('entries/show', { entries })
+                prettyLog("entries in entryController.index", entries)
+                res.json({
+                    message: 'ok',
+                    data: {
+                        entries: entries
+                    }
+                })
+            })
+            .catch(next)
     },
     
     create: (req, res, next) => {
