@@ -20,7 +20,7 @@ const userController = {
             lastName: req.body.lastName,
             email: req.body.email,
             username: req.body.username,
-            passwordDigest: hash
+            password_digest: hash
         })
 
         newUser.save()

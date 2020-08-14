@@ -15,12 +15,16 @@ passport.use(
                 if (!user) {
                     return done(null, false)
                 }
-                if (!authHelpers.comparePass(password, user.passwordDigest)) {
+                if (!authHelpers.comparePass(password, user.password_digest)) {
                     return done(null, false);
                 }
                 else {
                     return done(null, user)
                 }
+            })
+            .catch(err => {
+                console.log(err)
+                return done(err)
             })
     })
 )
