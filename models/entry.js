@@ -19,7 +19,7 @@ class Entry {
             prettyLog("entries in Entry.getAllUserEntries()", entries)
             return entries.map((el) => { 
                 prettyLog("el in entries.map in Entry.getAllUserEntries()", el)
-                new this(el) })
+                return new this(el) })
         })
     }
 
