@@ -7,6 +7,7 @@
     <p><%= entries.entry %></p>
     <p><%= entries.entryDate %></p>
     <p><%= entries.tag %></p>
+    <a href="/entry/<%= entries.id %>/edit">Edit</a>
 <% }) %>
 
 <form method="POST" action="/entry/new">

@@ -23,13 +23,41 @@ class Entry {
 
             return entries.map((entry) => { 
                 const userEntry = new this(entry)
-                const entryDate = moment(userEntry.entryDate)
+                prettyLog("userEntry before moment manipulation in getAllUserEntries(id) in entry.js", userEntry)
+
+                const entryDate = moment(entry.entry_date)
                 const readableEntryDate = entryDate.format("dddd, MMMM Do, YYYY")
                 userEntry.entryDate = readableEntryDate
                 prettyLog("DB -> Entry object in getAllUserEntries(id) in entry.js", userEntry)
 
                 return userEntry 
             })
+        })
+    }
+
+    static getById(id) {
+        return db.oneOrNone(
+            `SELECT * FROM entries WHERE id = $1`
+            , id
+        )
+        .then((entry) => {
+            prettyLog("DB object returned from getById(id) in entry.js", entry)
+
+
+            if (entry) {
+                const foundEntry = new this (entry)
+                prettyLog("entry before moment manipulation in getById(id) in entry.js", foundEntry)
+
+                const entryDate = moment(entry.entry_date)
+                const readableEntryDate = entryDate.format("YYYY-MM-DD")
+                foundEntry.entryDate = readableEntryDate;
+                prettyLog("DB -> Entry object in getById(id) in entry.js", foundEntry)
+
+                return foundEntry
+            }
+            else {
+                throw new Error('No entry found')
+            }
         })
     }
 
@@ -46,6 +74,13 @@ class Entry {
             prettyLog("DB object returned from save() in entry.js", entry);
             return Object.assign(this, entry)
         })
+    }
+
+    delete() {
+        return db.none(
+            `DELETE FROM entries WHERE id = $1`, 
+            this.id
+        )
     }
 }
 
