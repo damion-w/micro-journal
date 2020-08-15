@@ -6,15 +6,7 @@ const entryController = {
         Entry.getAllUserEntries(req.user.id)
             .then((entries) => {
             prettyLog("Entries from getAllUserEntries() in entryController.index", entries);
-
-                res.render('entries/show', { entries })
-                // prettyLog("entries in entryController.index", entries)
-                // res.json({
-                //     message: 'ok',
-                //     data: {
-                //         entries: entries
-                //     }
-                // })
+            res.render('entries/index', { entries })
             })
             .catch(next)
     },
@@ -30,12 +22,13 @@ const entryController = {
 
         newEntry.save()
             .then((entry) => {
-                res.json({
-                    message: 'ok',
-                    data: {
-                        entry: entry
-                    }
-                })
+                res.redirect('/entry')
+                // res.json({
+                //     message: 'ok',
+                //     data: {
+                //         entry: entry
+                //     }
+                // })
             })
             .catch(next)
     }

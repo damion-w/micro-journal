@@ -16,7 +16,7 @@ authRouter.post(
 )
 
 authRouter.post('/register', (req, res) => {
-    res.render('auth/register')
+    res.render("auth/registration");
 })
 
 authRouter.get('/logout', (req, res) => {

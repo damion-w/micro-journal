@@ -1,12 +1,16 @@
 <%- include('../partials/boilerplate') %>
 
-<h1>Add an entry!</h1>
+<h1>Entries!</h1>
 
-<form method="POST" action="/entry">
-    <input name="entry" type="text" placeholder="Entry" />
-    <input name="entryDate" type="date" />
-    <input name="tag" type="text" placeholder="Tag" />
-    <input type="submit" value="Add Entry" />
+<% entries.forEach((entries) => { %>
+    
+    <p><%= entries.entry %></p>
+    <p><%= entries.entryDate %></p>
+    <p><%= entries.tag %></p>
+<% }) %>
+
+<form method="POST" action="/entry/new">
+    <button type="submit">Add entry</button>
 </form>
 
 <%- include('../partials/end') %>

@@ -1,0 +1,12 @@
+<%- include('../partials/boilerplate') %>
+
+<h1>Add an entry!</h1>
+
+<form method="POST" action="/entry">
+    <input name="entry" type="text" placeholder="Entry" />
+    <input name="entryDate" type="date" />
+    <input name="tag" type="text" placeholder="Tag" />
+    <input type="submit" value="Add Entry" />
+</form>
+
+<%- include('../partials/end') %>
