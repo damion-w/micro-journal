@@ -6,7 +6,7 @@ const entryRouter = require('express').Router()
 
 entryRouter.get('/', entryController.index)
 entryRouter.post('/', authHelpers.loginRequired, entryController.create)
-//entryRouter.put('/:id([0-9]+)', authHelpers.loginRequired, entryController.update)
+entryRouter.put('/:id([0-9]+)', authHelpers.loginRequired, entryController.update)
 entryRouter.post('/new', authHelpers.loginRequired, (req, res) => {
   res.render("entries/new");
 })

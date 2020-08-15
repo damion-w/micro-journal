@@ -36,6 +36,21 @@ const entryController = {
                 next()
             })
             .catch(next)
+    },
+
+    update: (req, res, next) => {
+        Entry.getById(req.params.id)
+            .then((foundEntry) => {
+                return foundEntry.update({
+                    entry: req.body.entry,
+                    entryDate: req.body.entryDate,
+                    tag: req.body.tag
+                })
+            })
+            .then((updatedEntry) => {
+                res.redirect('/entry')
+            })
+            .catch(next)
     }
 }
 

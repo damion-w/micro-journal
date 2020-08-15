@@ -15,7 +15,7 @@ class Entry {
 
     static getAllUserEntries(id) {
         return db.manyOrNone(
-            `SELECT * FROM entries WHERE user_id = $1`
+            `SELECT * FROM entries WHERE user_id = $1 ORDER BY entry_date ASC`
             , id
         )
         .then((entries) => {
@@ -82,6 +82,23 @@ class Entry {
             this.id
         )
     }
+
+    update(changes) {
+        Object.assign(this, changes)
+
+        return db.one(
+            `UPDATE entries SET
+            entry = $/entry/,
+            entry_date = $/entryDate/,
+            tag = $/tag/
+            WHERE id = $/id/
+            RETURNING *`
+            , this
+        )
+        .then((entry) => {
+            return Object.assign(this, entry)
+        })
+    }    
 }
 
 module.exports = Entry
