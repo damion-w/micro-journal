@@ -1,8 +1,13 @@
 function prettyLog(title, str) {
-    console.log(`**********`)
-    console.log(title)
-    console.log(str)
-    console.log(`**********\n`)
+    if (process.env.NODE_ENV === 'dev') {
+        console.log(`\n************************************************************`);
+        console.log(title)
+        console.log(`************************************************************`);
+        if (str) {
+            console.log(str)
+            console.log(`------------------------------------------------------------`);
+        }
+    }
 }
 
 module.exports = prettyLog

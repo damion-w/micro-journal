@@ -1,11 +1,11 @@
+const prettylog = require('../services/log/pretty-logs')
+
 require('dotenv').config
 const DB_NAME = process.env.DB_NAME || "micro_journal_dev"
 
 const options = {
     query: e => {
-        if (process.env.NODE_ENV === 'dev') {
-            console.log(e.query)
-        }
+        prettylog("DB Query", e.query)
     }
 }
 

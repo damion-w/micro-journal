@@ -15,8 +15,16 @@ class User {
             `SELECT * FROM users WHERE username = $1`,
             username)
         .then((user => {
-            if (user) return new this(user)
-            else throw new Error('User not found')
+            if (user) {
+                const foundUser = new this(user)
+                foundUser.firstName = user.first_name
+                foundUser.lastName = user.last_name
+
+                return foundUser
+            }
+            else {
+                throw new Error('User not found')
+            }
         }))
     }
 

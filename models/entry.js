@@ -1,6 +1,9 @@
 const db = require('../db/config')
 const prettyLog = require('../services/log/pretty-logs')
 
+const moment = require('moment')
+moment().format()
+
 class Entry {
     constructor({ id, user_id, entry, entryDate, tag }) {
         this.id = id || null,
@@ -16,10 +19,17 @@ class Entry {
             , id
         )
         .then((entries) => {
-            prettyLog("entries in Entry.getAllUserEntries()", entries)
-            return entries.map((el) => { 
-                prettyLog("el in entries.map in Entry.getAllUserEntries()", el)
-                return new this(el) })
+            prettyLog("DB object returned from getAllUserEntries(id) in entry.js", entries)
+
+            return entries.map((entry) => { 
+                const userEntry = new this(entry)
+                const entryDate = moment(userEntry.entryDate)
+                const readableEntryDate = entryDate.format("dddd, MMMM Do, YYYY")
+                userEntry.entryDate = readableEntryDate
+                prettyLog("DB -> Entry object in getAllUserEntries(id) in entry.js", userEntry)
+
+                return userEntry 
+            })
         })
     }
 
@@ -32,8 +42,9 @@ class Entry {
             RETURNING *`
             , this
         )
-        .then((user) => {
-            return Object.assign(this, user)
+        .then((entry) => {
+            prettyLog("DB object returned from save() in entry.js", entry);
+            return Object.assign(this, entry)
         })
     }
 }

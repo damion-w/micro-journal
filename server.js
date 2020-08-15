@@ -17,6 +17,7 @@ app.use(logger('dev'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
+app.use(express.static('public'));
 app.use(cookieParser())
 app.use(
     session({
