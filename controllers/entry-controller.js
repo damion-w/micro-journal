@@ -51,6 +51,17 @@ const entryController = {
                 res.redirect('/entry')
             })
             .catch(next)
+    },
+
+    delete: (req, res, next) => {
+        Entry.getById(req.params.id)
+          .then((foundEntry) => {
+            return foundEntry.delete()
+          })
+          .then(() => {
+            res.redirect('/entry');
+          })
+          .catch(next);
     }
 }
 

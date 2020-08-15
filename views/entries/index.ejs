@@ -8,6 +8,12 @@
     <p><%= entries.entryDate %></p>
     <p><%= entries.tag %></p>
     <a href="/entry/<%= entries.id %>/edit">Edit</a>
+    <a href="/entry/<%= entries.id %>?_method=DELETE">Delete</a>
+
+    <form method="POST" action="/entry/<%= entries.id %>?_method=DELETE">
+        <button type="submit">Delete</button>
+    </form>
+
 <% }) %>
 
 <form method="POST" action="/entry/new">
