@@ -121,5 +121,12 @@ body {
 
 textarea {
     resize: none;
-    height: 5em;
+    height: 6em;
+}
+
+.delete {
+    display: flex;
+    justify-content: center;
+    background: #EF3E4A;
+    color: #A1CAD0;
 }

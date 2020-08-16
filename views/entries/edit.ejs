@@ -1,10 +1,16 @@
 <%- include('../partials/boilerplate') %>
 
-<form method="POST" action="/entry/<%= entry.id %>?_method=PUT">
-    <input name="entry" type="text" placeholder="Entry" value="<%= entry.entry %>" />
-    <input name="entryDate" type="date" value="<%= entry.entryDate %>" />
-    <input name="tag" type="text" placeholder="Tag" value="<%= entry.tag %>" />
-    <input type="submit" value="Update Entry" />
-</form>
+<h1 class="title">Edit entry!</h1>
+
+<div class="form-container">
+    <div class="form-box">
+        <form class="flex-form" method="POST" action="/entry/<%= entry.id %>?_method=PUT">
+            <textarea class="form-inputs" name="entry" placeholder="Entry"><%= entry.entry %></textarea>
+            <input class="form-inputs" name="entryDate" type="date" value="<%= entry.entryDate %>" />
+            <input class="form-inputs" name="tag" type="text" placeholder="Tag" value="<%= entry.tag %>" />
+            <input class="form-btn" type="submit" value="Update Entry" />
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/end') %> 
