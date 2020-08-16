@@ -8,7 +8,7 @@ entryRouter.get('/', entryController.index)
 entryRouter.post('/', authHelpers.loginRequired, entryController.create)
 entryRouter.put('/:id([0-9]+)', authHelpers.loginRequired, entryController.update)
 entryRouter.delete('/:id([0-9]+)', authHelpers.loginRequired, entryController.delete)
-entryRouter.post('/new', authHelpers.loginRequired, (req, res) => {
+entryRouter.get('/new', authHelpers.loginRequired, (req, res) => {
   res.render("entries/new");
 })
 

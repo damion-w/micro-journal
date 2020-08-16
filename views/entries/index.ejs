@@ -1,23 +1,26 @@
 <%- include('../partials/boilerplate') %>
 
-<h1>Entries!</h1>
+<h1 class="title">Reflections</h1>
+
+<a class="add-entry-link" href="/entry/new">Add a new entry</a>
 
 <% entries.forEach((entries) => { %>
-    
-    <p><%= entries.entry %></p>
-    <p><%= entries.entryDate %></p>
-    <p><%= entries.tag %></p>
-    <a href="/entry/<%= entries.id %>/edit">Edit</a>
-    <a href="/entry/<%= entries.id %>?_method=DELETE">Delete</a>
-
-    <form method="POST" action="/entry/<%= entries.id %>?_method=DELETE">
-        <button type="submit">Delete</button>
-    </form>
-
+    <div class="form-container">
+        <div class="entry-box">
+            <p class="entry-date"><%= entries.entryDate %></p>
+            <p><span class="entry-label">Keep: </span><%= entries.entry %></p>
+            <p><span class="entry-label">Tag: </span><%= entries.tag %></p>
+            
+            <div class="entry-footer">
+                <div class="entry-links">
+                        <a href="/entry/<%= entries.id %>/edit">Edit</a>
+                </div>
+                <div class="entry-links">
+                    <a href="/entry/<%= entries.id %>?_method=DELETE">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 <% }) %>
-
-<form method="POST" action="/entry/new">
-    <button type="submit">Add entry</button>
-</form>
 
 <%- include('../partials/end') %>

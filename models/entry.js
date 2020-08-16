@@ -15,7 +15,7 @@ class Entry {
 
     static getAllUserEntries(id) {
         return db.manyOrNone(
-            `SELECT * FROM entries WHERE user_id = $1 ORDER BY entry_date ASC`
+            `SELECT * FROM entries WHERE user_id = $1 ORDER BY entry_date DESC`
             , id
         )
         .then((entries) => {
