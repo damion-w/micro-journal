@@ -15,7 +15,7 @@ authRouter.post(
     })
 )
 
-authRouter.post('/register', (req, res) => {
+authRouter.get('/register', (req, res) => {
     res.render("auth/registration");
 })
 

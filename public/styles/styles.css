@@ -1,0 +1,57 @@
+body {
+    font-family: 'Indie Flower', cursive;
+    background: #F0F2F5;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    font-size: 3em;
+    text-shadow: 4px 4px 5px grey;
+    margin: .25em;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: .25em;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    padding: 3em;
+}
+
+.auth-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.auth-inputs {
+    font-size: 1.5em;
+    border: 1px solid #DDDFE2;
+    border-radius: 6px;
+    padding: .5em;
+    width: 90%;
+    margin-bottom: 1em;
+}
+
+.register-link {
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+}
