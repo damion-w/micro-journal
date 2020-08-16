@@ -3,12 +3,20 @@ body {
     background: #F0F2F5;
 }
 
-.title {
+.logo {
     display: flex;
     justify-content: center;
     align-self: center;
     font-size: 3em;
     text-shadow: 4px 4px 5px grey;
+    margin: .25em;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    font-size: 3em;
     margin: .25em;
 }
 
@@ -20,12 +28,12 @@ body {
     margin-top: .25em;
 }
 
-.login-container {
+.form-container {
     display: flex;
     justify-content: center;
 }
 
-.login-box {
+.form-box {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -33,21 +41,33 @@ body {
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
     padding: 3em;
+    width: 40vw;
 }
 
-.auth-form {
+.flex-form {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.auth-inputs {
+.form-inputs {
     font-size: 1.5em;
     border: 1px solid #DDDFE2;
     border-radius: 6px;
     padding: .5em;
     width: 90%;
     margin-bottom: 1em;
+}
+
+.form-btn {
+    font-size: 1.5em;
+    border-style: none;
+    border-radius: 6px;
+    padding: .5em;
+    width: 90%;
+    margin-bottom: 1em;
+    background: #CDFF06;
+    color: #0023F5
 }
 
 .register-link {

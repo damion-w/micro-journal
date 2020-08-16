@@ -27,7 +27,7 @@ const userController = {
             .then((user) => {
                 req.login(user, (err) => {
                     if (err) return next(err)
-                    else res.redirect('/user')
+                    else res.redirect('/entry')
                 })
             })
             .catch(next)

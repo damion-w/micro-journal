@@ -1,14 +1,18 @@
 <%- include('../partials/boilerplate') %>
 
-<h1>Add user</h1>
+<h1 class="title">Add user</h1>
 
-<form method="post" action="/user">
-    <input name="firstName" type="text" placeholder="First name" />
-    <input name="lastName" type="text" placeholder="Last name" />
-    <input name="email" type="email" placeholder="Email" />
-    <input name="username" type="username" placeholder="Username" />
-    <input name="password" type="password" placeholder="Password" />
-    <input type="submit" value="Register" />
-</form>
+<div class="form-container">
+    <div class="form-box">
+        <form class="flex-form" method="post" action="/user">
+            <input class="form-inputs" name="firstName" type="text" placeholder="First name" />
+            <input class="form-inputs" name="lastName" type="text" placeholder="Last name" />
+            <input class="form-inputs" name="email" type="email" placeholder="Email" />
+            <input class="form-inputs" name="username" type="username" placeholder="Username" />
+            <input class="form-inputs" name="password" type="password" placeholder="Password" />
+            <input class="form-btn" type="submit" value="Register" />
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/end') %>
