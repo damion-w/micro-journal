@@ -1,12 +1,16 @@
 <%- include('../partials/boilerplate') %>
 
-<h1>Add an entry!</h1>
+<h1 class="title">Add an entry!</h1>
 
-<form method="POST" action="/entry">
-    <input name="entry" type="text" placeholder="Entry" />
-    <input name="entryDate" type="date" />
-    <input name="tag" type="text" placeholder="Tag" />
-    <input type="submit" value="Add Entry" />
-</form>
+<div class="form-container">
+    <div class="form-box">
+        <form class="flex-form" method="POST" action="/entry">
+            <textarea class="form-inputs" name="entry" type="text" placeholder="Entry"></textarea>
+            <input class="form-inputs" name="entryDate" type="date" />
+            <input class="form-inputs" name="tag" type="text" placeholder="Tag" />
+            <input class="form-btn" type="submit" value="Add Entry" />
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/end') %>

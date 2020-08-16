@@ -111,11 +111,15 @@ body {
 
 .entry-footer {
     display: flex;
-    /* justify-content: center; */
 }
 
 .entry-links {
     display: flex;
     width: 50%;
     justify-content: center;
+}
+
+textarea {
+    resize: none;
+    height: 5em;
 }
