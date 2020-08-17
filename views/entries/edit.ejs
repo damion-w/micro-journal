@@ -5,9 +5,10 @@
 <div class="form-container">
     <div class="form-box">
         <form class="flex-form" method="POST" action="/entry/<%= entry.id %>?_method=PUT">
-            <textarea class="form-inputs" name="entry" placeholder="Entry"><%= entry.entry %></textarea>
+            <textarea class="form-inputs" name="keep"><%= entry.keep %></textarea>
+            <textarea class="form-inputs" name="throwaway"><%= entry.throwaway %></textarea>
             <input class="form-inputs" name="entryDate" type="date" value="<%= entry.entryDate %>" />
-            <input class="form-inputs" name="tag" type="text" placeholder="Tag" value="<%= entry.tag %>" />
+            <input class="form-inputs" name="tag" type="text" value="<%= entry.tag %>" />
             <input class="form-btn" type="submit" value="Update Entry" />
         </form>
     </div>

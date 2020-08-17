@@ -5,10 +5,11 @@ const moment = require('moment')
 moment().format()
 
 class Entry {
-    constructor({ id, user_id, entry, entryDate, tag }) {
+    constructor({ id, user_id, keep, throwaway, entryDate, tag }) {
         this.id = id || null,
         this.user_id = user_id,
-        this.entry = entry,
+        this.keep = keep,
+        this.throwaway = throwaway,
         this.entryDate = entryDate,
         this.tag = tag
     }
@@ -64,9 +65,9 @@ class Entry {
     save() {
         return db.one(
             `INSERT INTO entries 
-            (user_id, entry, entry_date, tag)
+            (user_id, keep, throwaway, entry_date, tag)
             VALUES
-            ($/user_id/, $/entry/, $/entryDate/, $/tag/)
+            ($/user_id/, $/keep/, $/throwaway/, $/entryDate/, $/tag/)
             RETURNING *`
             , this
         )
@@ -88,7 +89,8 @@ class Entry {
 
         return db.one(
             `UPDATE entries SET
-            entry = $/entry/,
+            keep = $/keep/, 
+            throwaway = $/throwaway/,
             entry_date = $/entryDate/,
             tag = $/tag/
             WHERE id = $/id/

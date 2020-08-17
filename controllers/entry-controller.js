@@ -14,7 +14,8 @@ const entryController = {
     create: (req, res, next) => {
         const newEntry = new Entry({
             user_id: req.user.id,
-            entry: req.body.entry,
+            keep: req.body.keep,
+            throwaway: req.body.throwaway,
             entryDate: req.body.entryDate,
             tag: req.body.tag
         })
@@ -42,7 +43,8 @@ const entryController = {
         Entry.getById(req.params.id)
             .then((foundEntry) => {
                 return foundEntry.update({
-                    entry: req.body.entry,
+                    keep: req.body.keep,
+                    throwaway: req.body.throwaway, 
                     entryDate: req.body.entryDate,
                     tag: req.body.tag
                 })
