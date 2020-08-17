@@ -1,0 +1,2 @@
+ALTER TABLE entries
+ALTER COLUMN throwaway SET NOT NULL;
